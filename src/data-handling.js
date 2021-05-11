@@ -1,20 +1,19 @@
-import { API_KEY as key } from './apikey';
+import API_KEY from './apikey';
 
-let currentUnit = 0; // 0 - Celsius 1 - Fahrenheit
+const currentUnit = 0; // 0 - Celsius 1 - Fahrenheit
 
 function parseTemp(temp) {
-  let parsedTemp =
-    currentUnit === 0 ? Number(temp) - 273.1 : 1.8 * (Number(temp) - 273) + 32;
+  const parsedTemp = currentUnit === 0 ? Number(temp) - 273.1 : 1.8 * (Number(temp) - 273) + 32;
   return Math.round(parsedTemp * 10) / 10;
 }
 
 function filterData(weatherData) {
-  let city = weatherData.name;
-  let country = weatherData.sys.country;
-  let place = `${city}, ${country}`;
-  let { main: weatherTitle, description: weatherDesc } = weatherData.weather[0];
-  let details = weatherData.main;
-  let {
+  const city = weatherData.name;
+  const { country } = weatherData.sys;
+  const place = `${city}, ${country}`;
+  const { main: weatherTitle, description: weatherDesc } = weatherData.weather[0];
+  const details = weatherData.main;
+  const {
     feels_like: feeling,
     humidity,
     pressure,
@@ -47,7 +46,7 @@ function fillResult({
   maxTemp,
   minTemp,
 }) {
-  let results = [
+  const results = [
     { elementId: '#result-temp', value: `${temp}°` },
     { elementId: '#result-place', value: place },
     { elementId: '#result-weather', value: weatherTitle },
@@ -58,23 +57,21 @@ function fillResult({
     { elementId: '#result-mintemp', value: `${minTemp}°` },
     { elementId: '#result-maxtemp', value: `${maxTemp}°` },
   ];
-
-  for (let { elementId, value } of results) {
+  // eslint-disable-next-line
+  for (const { elementId, value } of results) {
     document.querySelector(elementId).innerText = value;
   }
 }
 
-//HTTPS
+// HTTPS
 async function weatherRequest(city) {
-  try {
-    let response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`
-    );
-    let data = await response.json();
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`,
+  );
+  const data = await response.json();
+  return data;
 }
 
-export { weatherRequest, fillResult, filterData, parseTemp, currentUnit };
+export {
+  weatherRequest, fillResult, filterData, parseTemp, currentUnit,
+};

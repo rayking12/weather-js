@@ -23,8 +23,8 @@ To get started, you should first get this file in your local machine by cloning 
 > Create a file name "apikey" in src folder and input your Api key
 
 ```
-export const API_KEY = "{your_api_key}"
-}
+const API_KEY = "{your_api_key}"
+export default API_KEY
 
 ```
 > npm install
