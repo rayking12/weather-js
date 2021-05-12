@@ -7,10 +7,14 @@ function parseTemp(temp) {
   return Math.round(parsedTemp * 10) / 10;
 }
 
+let locationIcon = document.querySelector('.weather-icon');
+
 function filterData(weatherData) {
   const city = weatherData.name;
   const { country } = weatherData.sys;
   const place = `${city}, ${country}`;
+  const icon = weatherData.weather[0].icon;
+  locationIcon.innerHTML = `<img src="../assets/img/${icon}.png">` ;
   const { main: weatherTitle, description: weatherDesc } = weatherData.weather[0];
   const details = weatherData.main;
   const {
@@ -26,6 +30,7 @@ function filterData(weatherData) {
     place,
     weatherTitle,
     weatherDesc,
+    icon,
     feeling: parseTemp(feeling),
     humidity,
     pressure,
@@ -39,6 +44,7 @@ function fillResult({
   place,
   weatherTitle,
   weatherDesc,
+  icon,
   feeling,
   humidity,
   pressure,

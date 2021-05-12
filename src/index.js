@@ -7,7 +7,6 @@ import {
 } from './data-handling';
 
 import convertTemps from './unit-convertion';
-
 const mainScreen = document.querySelector('#main-screen');
 const resultScreen = document.querySelector('#result-screen');
 
