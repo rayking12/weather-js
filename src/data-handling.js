@@ -14,7 +14,7 @@ function filterData(weatherData) {
   const { country } = weatherData.sys;
   const place = `${city}, ${country}`;
   const icon = weatherData.weather[0].icon;
-  locationIcon.innerHTML = `<img src="../assets/img/${icon}.png">` ;
+  locationIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${ icon }@2x.png">` ;
   const { main: weatherTitle, description: weatherDesc } = weatherData.weather[0];
   const details = weatherData.main;
   const {
