@@ -5,7 +5,7 @@
 > In this project I built a weather app with javascript mastering async, callbacks, promises and api calls in javascript
 
 ## Live Link
-Live Link [here] (https://kind-newton-b99448.netlify.app/)
+Live Link [here]( https://kind-newton-b99448.netlify.app/)
 
 ## Setup
  To get started, you have to have get a api key from openWeathermap 
