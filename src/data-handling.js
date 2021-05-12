@@ -7,14 +7,14 @@ function parseTemp(temp) {
   return Math.round(parsedTemp * 10) / 10;
 }
 
-let locationIcon = document.querySelector('.weather-icon');
+const locationIcon = document.querySelector('.weather-icon');
 
 function filterData(weatherData) {
   const city = weatherData.name;
   const { country } = weatherData.sys;
   const place = `${city}, ${country}`;
-  const icon = weatherData.weather[0].icon;
-  locationIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${ icon }@2x.png">` ;
+  const { icon } = weatherData.weather[0];
+  locationIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
   const { main: weatherTitle, description: weatherDesc } = weatherData.weather[0];
   const details = weatherData.main;
   const {
@@ -44,7 +44,6 @@ function fillResult({
   place,
   weatherTitle,
   weatherDesc,
-  icon,
   feeling,
   humidity,
   pressure,

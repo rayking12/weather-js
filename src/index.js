@@ -1,4 +1,5 @@
 import anime from 'animejs/lib/anime.es';
+import convertTemps from './unit-convertion';
 
 import {
   weatherRequest,
@@ -6,7 +7,6 @@ import {
   filterData,
 } from './data-handling';
 
-import convertTemps from './unit-convertion';
 const mainScreen = document.querySelector('#main-screen');
 const resultScreen = document.querySelector('#result-screen');
 
